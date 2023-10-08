@@ -1,0 +1,55 @@
+.benefit {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+
+  &__item {
+    display: flex;
+    gap: 50px;
+  }
+
+  &__icon-wrap {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #dc3545;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    mask-size: cover;
+    background-color: #fff;
+
+    &_type_cookbook {
+      mask-image: url(../../../images/cookbook_icon.svg);
+    }
+    &_type_calendar {
+      mask-image: url(../../../images/calendar_icon.svg);
+    }
+    &_type_list {
+      mask-image: url(../../../images/list_icon.svg);
+    }
+    &_type_comment {
+      mask-image: url(../../../images/comments_icon.svg);
+    }
+  }
+
+  &__content-wrap {
+    width: 500px;
+  }
+
+  &__title {
+    font-size: 28px;
+  }
+
+  &__text {
+    margin: 0;
+  }
+}
