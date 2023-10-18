@@ -4,7 +4,7 @@ import Footer from '../Sections/Footer/Footer';
 import CustomRoutes from '../Routes/CustomRoutes';
 import CurrentUserContext from '../../context/CurrentUserContext';
 
-import './App.css';
+import './App.scss';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);

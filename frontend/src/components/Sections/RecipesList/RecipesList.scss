@@ -1,0 +1,81 @@
+$cardGap: 2%;
+$cardColumn: 3;
+
+.recipes {
+  &__card-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: $cardGap;
+  }
+
+  &__card-item {
+    width: calc(#{(100% - ($cardColumn - 1)*$cardGap)/$cardColumn});
+    margin-bottom: $cardGap;
+  }
+
+  &__card {
+    letter-spacing: 1.1px;
+    border: 2px solid rgb(220, 53, 69);
+  }
+
+  &__title {
+    background-color: inherit;
+    border-bottom: none;
+    font-family: cursive;
+    text-transform: uppercase;
+    text-align: end;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 20px;
+  }
+
+  &__body {
+    min-height: 132px;
+  }
+
+  &__ingredient-title {
+    font-family: cursive;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+    width: 25%;
+
+    &::after {
+      content: '';
+      position: absolute;
+      border-bottom: 1px solid rgb(220, 53, 69);
+      top: 50%;
+      left: 100%;
+      width: 300%;
+    }
+  }
+
+  &__ingredient-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 4%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__ingredient-item {
+    width: 44%;
+    font-size: 14px;
+  }
+
+  &__ingredient-more {
+    font-weight: 600;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .7;
+    }
+  }
+}
