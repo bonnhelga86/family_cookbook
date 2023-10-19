@@ -1,7 +1,7 @@
 import RecipesList from '../../Sections/RecipesList/RecipesList';
 import Search from '../../Sections/Search/Search';
 
-function Recipes() {
+function Recipes({ isLoggedIn }) {
   return (
     <>
       <Search />
