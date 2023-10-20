@@ -1,5 +1,9 @@
 $cardGap: 2%;
-$cardColumn: 3;
+$cardColumn: (
+  1200: 3,
+  991: 2,
+  767: 1,
+);
 
 .recipes {
   &__card-list {
@@ -12,13 +16,13 @@ $cardColumn: 3;
   }
 
   &__card-item {
-    width: calc(#{(100% - ($cardColumn - 1)*$cardGap)/$cardColumn});
+    width: calc(#{(100% - (map-get($cardColumn, 1200) - 1)*$cardGap)/map-get($cardColumn, 1200)});
     margin-bottom: $cardGap;
   }
 
   &__card {
     letter-spacing: 1.1px;
-    border: 2px solid rgb(220, 53, 69);
+    border: 2px solid #dc3545;
   }
 
   &__title {
@@ -48,7 +52,7 @@ $cardColumn: 3;
     &::after {
       content: '';
       position: absolute;
-      border-bottom: 1px solid rgb(220, 53, 69);
+      border-bottom: 1px solid #dc3545;
       top: 50%;
       left: 100%;
       width: 300%;
@@ -76,6 +80,24 @@ $cardColumn: 3;
     &:hover {
       cursor: pointer;
       opacity: .7;
+    }
+  }
+}
+
+@media screen and (max-width:991px) {
+  .recipes {
+    &__card-item {
+      width: calc(#{(100% - (map-get($cardColumn, 991) - 1)*$cardGap)/map-get($cardColumn, 991)});
+      margin-bottom: $cardGap;
+    }
+  }
+}
+
+@media screen and (max-width:767px) {
+  .recipes {
+    &__card-item {
+      width: calc(#{(100% - (map-get($cardColumn, 767) - 1)*$cardGap)/map-get($cardColumn, 767)});
+      margin-bottom: $cardGap;
     }
   }
 }

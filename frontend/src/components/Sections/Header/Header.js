@@ -11,11 +11,12 @@ function Header({ isLoggedIn }) {
       <Navbar bg="danger" data-bs-theme="dark">
         <Container>
           <Navbar.Brand as={Link} to="/">Family CookBook</Navbar.Brand>
-          <Nav>
+          <Nav className="header__menu">
             <Nav.Link className="header__link" as={Link} to="/recipes">Меню</Nav.Link>
             <Nav.Link className="header__link" as={Link} to="/recipes">Рецепты</Nav.Link>
             <Nav.Link className="header__link" as={Link} to="/profile">Профиль</Nav.Link>
           </Nav>
+          <div className="header__burger"></div>
         </Container>
       </Navbar>
     </header>

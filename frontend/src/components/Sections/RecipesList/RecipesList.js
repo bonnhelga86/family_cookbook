@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Stack from 'react-bootstrap/Stack';
-import Card from 'react-bootstrap/Card';
+import RecipesItem from '../../Elements/RecipesItem/RecipesItem';
 import PopupIngredients from '../PopupIngredients/PopupIngredients';
 import './RecipesList.scss';
 import { recipesList } from '../../../utils/recipes';
@@ -18,15 +18,19 @@ function RecipesList() {
       ingredientList.push({
         item: 'Ещё...',
         extraClass: 'more',
-        onMouseOver: () => handleOpenMoreIngredients(ingredients),
+        onMouseOver: (event) => handleOpenMoreIngredients(event, ingredients),
         onMouseOut: () => setIsPopupOpen(false)
       });
       return ingredientList;
     }
   }
 
-  function handleOpenMoreIngredients(ingredients) {
-    console.log('ingredients', ingredients);
+  function handleOpenMoreIngredients(event, ingredients) {
+    const {x, y} = event.nativeEvent;
+    const popupIngredientsElement = document.querySelector('.popup-ingredients').querySelector('.popup__container');
+    popupIngredientsElement.style.top = (y - 100) + 'px';
+    popupIngredientsElement.style.left  = (x - 200) + 'px';
+
     setIngredientList(ingredients);
     setIsPopupOpen(true);
   }
@@ -39,32 +43,10 @@ function RecipesList() {
             <ul className="recipes__card-list">
               {recipesList.map(recipe => {
                 return (
-                  <li className="recipes__card-item" key={recipe.id}>
-                    <Card bg="light" text="dark" className="recipes__card">
-                      <Card.Header className="recipes__title"> {recipe.title} </Card.Header>
-                      <Card.Body className="recipes__body">
-                        <Card.Title className="recipes__ingredient-title"> Состав </Card.Title>
-                        <ul className="recipes__ingredient-list">
-                          {getIngredientList(recipe.ingredients).map(({item, extraClass, ...props}) => {
-                            return(
-                              <li
-                                key={`${recipe.id}_${item}`}
-                                className={`recipes__ingredient-item ${extraClass ? 'recipes__ingredient-'+extraClass : ''}`}
-                                {...props}
-                              >
-                                {item}
-                              </li>
-                            )
-                          })}
-                        </ul>
-                      </Card.Body>
-                    </Card>
-                  </li>
+                  <RecipesItem recipe={recipe} getIngredientList={getIngredientList} key={recipe.id} />
                 )
               })}
             </ul>
-
-
           </Stack>
         </Container>
       </section>

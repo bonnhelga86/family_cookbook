@@ -12,7 +12,7 @@ function PopupIngredients({ isPopupOpen, ingredientList }) {
       <ul className="popup-ingredients__list">
         {ingredientList.map(ingredient => {
           return(
-            <li className="popup-ingredients__item">
+            <li className="popup-ingredients__item" key={ingredient.item}>
               {ingredient.item}
             </li>
           )

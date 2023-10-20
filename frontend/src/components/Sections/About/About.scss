@@ -8,8 +8,7 @@
   }
 
   &::before {
-    content: '';
-    display: block;
+    content: 'Хмели-сумели и вы сможете!';
     position: absolute;
     top: 0;
     right: 0;
@@ -18,27 +17,77 @@
     background-color: #dc3545;
     background-repeat: no-repeat;
     background-position: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1.05px;
+    padding: 0 55px;
   }
 
   &::after {
-    content: 'Хмели-сумели и вы сможете!';
+    content: '';
     display: flex;
     text-align: center;
     align-items: center;
     position: absolute;
-    top: 20%;
-    right: 100px;
-    width: 400px;
-    height: 300px;
+    top: 207px;
+    right: 48px;
+    width: 230px;
+    height: 224px;
     background-color: #F5F5F5;
-    background-repeat: no-repeat;
-    background-position: right;
-    border-radius: 10px;
-    font-size: 30px;
-    letter-spacing: 1.05px;
+    mask-image: url(../../../images/message-icon.svg);
+    mask-size: cover;
   }
+}
 
+@media screen and (max-width:991px) {
+  .about {
+    padding: 0 20px 70px;
+    height: 100%;
+    max-width: 711px;
+    margin: 0 auto;
 
+    &::before {
+      width: 201px;
+      height: 189px;
+      top: 39%;
+      right: 35%;
+      background-color: #fff;
+      color: #dc3545;
+      font-size: 19px;
+      padding: 0 15px;
+    }
 
+    &::after {
+      top: 40%;
+      right: 35%;
+      width: 210px;
+      height: 202px;
+      background-color: #dc3545;
+    }
+  }
+}
 
+@media screen and (max-width:767px) {
+  .about {
+
+    &::before {
+      display: none;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width:576px) {
+  .about {
+    &__content {
+      padding-top: 30px;
+    }
+  }
 }
