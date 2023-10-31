@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from '../Sections/Header/Header';
 import Footer from '../Sections/Footer/Footer';
 import CustomRoutes from '../Routes/CustomRoutes';
@@ -7,6 +8,8 @@ import CurrentUserContext from '../../context/CurrentUserContext';
 import './App.scss';
 
 function App() {
+  const location = useLocation();
+
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
 
@@ -30,9 +33,11 @@ function App() {
     <>
       {isLoggedIn != null &&
         <CurrentUserContext.Provider value={currentUser}>
-          <Header
-            isLoggedIn={isLoggedIn}
-          />
+          {((location.pathname !== '/signup') && (location.pathname !== '/signup'))
+            && <Header
+                  isLoggedIn={isLoggedIn}
+                />
+          }
 
           <main className="content">
             <CustomRoutes
@@ -40,7 +45,7 @@ function App() {
             />
           </main>
 
-          <Footer />
+          {((location.pathname !== '/signup') && (location.pathname !== '/signup')) && <Footer />}
 
           {/* <PopupIngredients
             isPopupOpen={isPopupOpen}
