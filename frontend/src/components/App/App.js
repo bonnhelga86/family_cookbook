@@ -1,14 +1,15 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '../Sections/Header/Header';
 import Footer from '../Sections/Footer/Footer';
 import CustomRoutes from '../Routes/CustomRoutes';
 import CurrentUserContext from '../../context/CurrentUserContext';
-
+import * as auth from "../../utils/authApi";
 import './App.scss';
 
 function App() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
@@ -29,23 +30,55 @@ function App() {
   //   }
   // }
 
+  async function handleLogout() {
+    try {
+      const logoutResponse =  await auth.logout();
+      if (logoutResponse) {
+        setIsLoggedIn(false);
+        setCurrentUser({});
+        navigate('/', {replace: true});
+        return logoutResponse;
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function checkAuth() {
+    try {
+      const tokenCheckResponse =  await auth.tokenCheck();
+        if (tokenCheckResponse) {
+          setIsLoggedIn(true);
+          navigate('/recipes', {replace: true});
+        }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  React.useEffect(() => {
+    checkAuth();
+  }, [])
+
   return (
     <>
       {isLoggedIn != null &&
         <CurrentUserContext.Provider value={currentUser}>
-          {((location.pathname !== '/signup') && (location.pathname !== '/signup'))
+          {((location.pathname !== '/signup') && (location.pathname !== '/signin'))
             && <Header
                   isLoggedIn={isLoggedIn}
+                  handleLogout={handleLogout}
                 />
           }
 
           <main className="content">
             <CustomRoutes
               isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
             />
           </main>
 
-          {((location.pathname !== '/signup') && (location.pathname !== '/signup')) && <Footer />}
+          {((location.pathname !== '/signup') && (location.pathname !== '/signin')) && <Footer />}
 
           {/* <PopupIngredients
             isPopupOpen={isPopupOpen}

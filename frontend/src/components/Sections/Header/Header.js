@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 
-function Header({ isLoggedIn }) {
+function Header({ isLoggedIn, handleLogout }) {
   return (
     <header className="header">
       <Navbar bg="danger" data-bs-theme="dark">
@@ -19,6 +19,8 @@ function Header({ isLoggedIn }) {
             ? <Nav.Link className="header__link" as={Link} to="/profile">Профиль</Nav.Link>
             : <Nav.Link className="header__link" as={Link} to="/signin">Войти</Nav.Link>
             }
+
+            {isLoggedIn && <button className="header__button" onClick={handleLogout} />}
           </Nav>
           <div className="header__burger"></div>
         </Container>

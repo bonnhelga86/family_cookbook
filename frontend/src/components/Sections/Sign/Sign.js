@@ -1,3 +1,4 @@
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
@@ -6,7 +7,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
 import './Sign.scss';
 
-function Sign({ handleSubmit }) {
+function Sign({ handleSubmit, inputValue, setInputValue }) {
   const location = useLocation();
 
    return (
@@ -19,7 +20,7 @@ function Sign({ handleSubmit }) {
           <Card.Title className="sign__title">
             {(location.pathname === '/signup') ? 'Регистрация' : 'Авторизация'}
           </Card.Title>
-          <Form noValidate onSubmit={handleSubmit} className="sign__form">
+          <Form noValidate onSubmit={(event) => handleSubmit(event)} className="sign__form">
 
           {(location.pathname === '/signup')
             && <FloatingLabel
@@ -27,7 +28,12 @@ function Sign({ handleSubmit }) {
                   label="Логин"
                   className="sign__label"
                 >
-                  <Form.Control className="sign__input" type="text" placeholder="Введите логин" />
+                  <Form.Control
+                    onChange={(event) => setInputValue({...inputValue, name: event.target.value})}
+                    className="sign__input"
+                    type="text"
+                    placeholder="Введите логин"
+                  />
                 </FloatingLabel>
           }
 
@@ -36,7 +42,12 @@ function Sign({ handleSubmit }) {
               label="Email"
               className="sign__label"
             >
-              <Form.Control className="sign__input" type="email" placeholder="Введите Email" />
+              <Form.Control
+                onChange={(event) => setInputValue({...inputValue, email: event.target.value})}
+                className="sign__input"
+                type="email"
+                placeholder="Введите Email"
+              />
             </FloatingLabel>
 
             <FloatingLabel
@@ -44,16 +55,26 @@ function Sign({ handleSubmit }) {
               label="Пароль"
               className="sign__label"
             >
-              <Form.Control className="sign__input" type="password" placeholder="Введите пароль" />
+              <Form.Control
+                onChange={(event) => setInputValue({...inputValue, password: event.target.value})}
+                className="sign__input"
+                type="password"
+                placeholder="Введите пароль"
+              />
             </FloatingLabel>
 
             {(location.pathname === '/signup')
               && <FloatingLabel
-                    controlId="floatingCheckPassword"
+                    controlId="floatingRepeatPassword"
                     label="Повторите пароль"
                     className="sign__label"
                   >
-                    <Form.Control className="sign__input" type="password" placeholder="Повторите пароль" />
+                    <Form.Control
+                      onChange={(event) => setInputValue({...inputValue, repeat_password: event.target.value})}
+                      className="sign__input"
+                      type="password"
+                      placeholder="Повторите пароль"
+                    />
                   </FloatingLabel>
             }
 

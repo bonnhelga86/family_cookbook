@@ -7,6 +7,19 @@
     }
   }
 
+  &__button {
+    mask-image: url(../../../images/exit_icon.svg);
+    mask-size: cover;
+    background-color: rgba(255, 255, 255, .7);
+    width: 35px;
+    height: 35px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, .85);
+    }
+  }
+
   &__burger {
     display: none;
     mask-image: url(../../../images/burger-menu_icon.svg);

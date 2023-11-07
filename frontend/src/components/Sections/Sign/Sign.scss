@@ -57,6 +57,11 @@ $mainColor: #dc3545;
       border-color: $mainColor;
       opacity: .8;
     }
+
+    &:active {
+      background-color: $mainColor;
+      border-color: $mainColor;
+    }
   }
 
   &__link {
