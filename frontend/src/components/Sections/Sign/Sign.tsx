@@ -5,9 +5,21 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
+import { IInputValue } from "../../Pages/SignUp/SignUp";
 import './Sign.scss';
 
-function Sign({ handleSubmit, inputValue, setInputValue }) {
+function Sign(
+  {
+    handleSubmit,
+    inputValue,
+    setInputValue
+  }:
+  {
+    handleSubmit: React.FormEventHandler<HTMLFormElement>,
+    inputValue: IInputValue,
+    setInputValue: React.Dispatch<React.SetStateAction<IInputValue>>
+  }
+) {
   const location = useLocation();
 
    return (
@@ -20,7 +32,12 @@ function Sign({ handleSubmit, inputValue, setInputValue }) {
           <Card.Title className="sign__title">
             {(location.pathname === '/signup') ? 'Регистрация' : 'Авторизация'}
           </Card.Title>
-          <Form noValidate onSubmit={(event) => handleSubmit(event)} className="sign__form">
+          <Form
+            noValidate
+            name="sign-form"
+            onSubmit={(event) => handleSubmit(event)}
+            className="sign__form"
+          >
 
           {(location.pathname === '/signup')
             && <FloatingLabel

@@ -7,12 +7,17 @@ import CurrentUserContext from '../../context/CurrentUserContext';
 import * as auth from "../../utils/authApi";
 import './App.scss';
 
+export interface ICurrentUser {
+  name: string,
+  email: string,
+}
+
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-  const [currentUser, setCurrentUser] = React.useState({});
+  const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(false);
+  const [currentUser, setCurrentUser] = React.useState<ICurrentUser>({name: '', email: ''});
 
   // function closePopup() {
   //   setIsPopupOpen(false);
@@ -35,9 +40,9 @@ function App() {
       const logoutResponse =  await auth.logout();
       if (logoutResponse) {
         setIsLoggedIn(false);
-        setCurrentUser({});
+        setCurrentUser({name: '', email: ''});
         navigate('/', {replace: true});
-        return logoutResponse;
+        // return logoutResponse;
       }
     } catch (error) {
       console.error(error);
@@ -49,6 +54,7 @@ function App() {
       const tokenCheckResponse =  await auth.tokenCheck();
         if (tokenCheckResponse) {
           setIsLoggedIn(true);
+          setCurrentUser({name: tokenCheckResponse.name, email: tokenCheckResponse.email});
           navigate('/recipes', {replace: true});
         }
     } catch (error) {
@@ -75,6 +81,7 @@ function App() {
             <CustomRoutes
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
+              setCurrentUser={setCurrentUser}
             />
           </main>
 

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Sign from "../../Sections/Sign/Sign";
 import * as auth from "../../../utils/authApi";
 
-function SignIn({ setIsLoggedIn }) {
+function SignIn({ setIsLoggedIn, setCurrentUser }) {
   const navigate = useNavigate();
 
   const [inputValue, setInputValue] = React.useState({email: '', password: ''});
@@ -15,6 +15,7 @@ function SignIn({ setIsLoggedIn }) {
           const tokenCheckResponse =  await auth.tokenCheck();
           if (tokenCheckResponse) {
             setIsLoggedIn(true);
+            setCurrentUser({name: tokenCheckResponse.name, email: tokenCheckResponse.email});
             navigate('/recipes', {replace: true});
           }
         }

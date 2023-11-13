@@ -5,7 +5,7 @@ import Profile from '../Pages/Profile/Profile';
 import SignIn from '../Pages/SignIn/SignIn';
 import SignUp from '../Pages/SignUp/SignUp';
 
-function CustomRoutes({ isLoggedIn, setIsLoggedIn }) {
+function CustomRoutes({ isLoggedIn, setIsLoggedIn, setCurrentUser }) {
   return (
     <Routes>
       {/* <Route path="/signup" element={
@@ -16,15 +16,19 @@ function CustomRoutes({ isLoggedIn, setIsLoggedIn }) {
         <SignRoute element={Login} isLoggedIn={isLoggedIn} handleLoggedIn={handleLoggedIn} />}
       /> */}
 
-      <Route path="/signup" element={ <SignUp setIsLoggedIn={setIsLoggedIn} /> }/>
+      <Route path="/signup" element={
+        <SignUp setIsLoggedIn={setIsLoggedIn} setCurrentUser={setCurrentUser} />
+      }/>
 
-      <Route path="/signin" element={ <SignIn setIsLoggedIn={setIsLoggedIn} /> }/>
+      <Route path="/signin" element={
+        <SignIn setIsLoggedIn={setIsLoggedIn} setCurrentUser={setCurrentUser} />
+      }/>
 
       <Route path="/" element={ <Main /> }/>
 
       <Route path="/recipes" element={ <Recipes isLoggedIn={isLoggedIn} /> }/>
 
-      <Route path="/profile" element={ <Profile /> }/>
+      <Route path="/profile" element={ <Profile setCurrentUser={setCurrentUser} /> }/>
 
       {/* <Route path="/movies" element={
         <ProtectedRoute element={Movies} isLoggedIn={isLoggedIn} /> }

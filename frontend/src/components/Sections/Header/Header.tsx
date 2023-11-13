@@ -5,7 +5,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 
-function Header({ isLoggedIn, handleLogout }) {
+interface IPropsHeader {
+  isLoggedIn: Boolean,
+  handleLogout: React.MouseEventHandler<HTMLButtonElement>
+}
+
+function Header({ isLoggedIn, handleLogout }: IPropsHeader) {
   return (
     <header className="header">
       <Navbar bg="danger" data-bs-theme="dark">

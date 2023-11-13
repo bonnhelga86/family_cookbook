@@ -11,7 +11,7 @@ function Footer() {
         <Container>
           <Navbar.Collapse className="justify-content-center">
             <Navbar.Text>
-            Copyright &copy; 2023
+              Copyright &copy; 2023
             </Navbar.Text>
           </Navbar.Collapse>
         </Container>
