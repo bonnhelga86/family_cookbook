@@ -2,14 +2,7 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 import Sign from "../../Sections/Sign/Sign";
 import * as auth from "../../../utils/authApi";
-import { ICurrentUser } from "../../App/App";
-
-export interface IInputValue {
-  name: string,
-  email: string,
-  password: string,
-  repeat_password: string
-}
+import { ICurrentUser, IInputValue } from "../../../utils/interfaceList";
 
 function SignUp(
   {

@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
-import { IInputValue } from "../../Pages/SignUp/SignUp";
+import { IInputValue } from "../../../utils/interfaceList";
 import './Sign.scss';
 
 function Sign(

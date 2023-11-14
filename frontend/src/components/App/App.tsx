@@ -5,12 +5,9 @@ import Footer from '../Sections/Footer/Footer';
 import CustomRoutes from '../Routes/CustomRoutes';
 import CurrentUserContext from '../../context/CurrentUserContext';
 import * as auth from "../../utils/authApi";
-import './App.scss';
+import { ICurrentUser } from "../../utils/interfaceList";
 
-export interface ICurrentUser {
-  name: string,
-  email: string,
-}
+import './App.scss';
 
 function App() {
   const location = useLocation();

@@ -1,7 +1,14 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+import { IRecipe } from '../../../utils/interfaceList';
 
-function RecipesItem({ recipe, getIngredientList }) {
+function RecipesItem(
+  { recipe, getIngredientList }:
+  {
+    recipe: IRecipe,
+    getIngredientList: Function
+  }
+) {
   return (
     <li className="recipes__card-item">
       <Card bg="light" text="dark" className="recipes__card">
@@ -9,7 +16,9 @@ function RecipesItem({ recipe, getIngredientList }) {
         <Card.Body className="recipes__body">
           <Card.Title className="recipes__ingredient-title"> Состав </Card.Title>
           <ul className="recipes__ingredient-list">
-            {getIngredientList(recipe.ingredients).map(({item, extraClass, ...props}) => {
+            {getIngredientList(recipe.ingredients).map((
+              {item, extraClass, ...props}: {item: string, extraClass: string}
+            ) => {
               return(
                 <li
                   key={`${recipe.id}_${item}`}

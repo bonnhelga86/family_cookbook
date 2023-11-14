@@ -6,15 +6,16 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
 import * as auth from "../../../utils/authApi";
 import CurrentUserContext from '../../../context/CurrentUserContext';
+import { ICurrentUser, IInputValue } from "../../../utils/interfaceList"
 import './Profile.scss';
 
-function Profile({ setCurrentUser }) {
-  const currentUser = React.useContext(CurrentUserContext);
-  const [inputValue, setInputValue] = React.useState({});
+function Profile({ setCurrentUser }: {setCurrentUser: React.Dispatch<React.SetStateAction<ICurrentUser>>}) {
+  const currentUser = React.useContext<ICurrentUser>(CurrentUserContext);
+  const [inputValue, setInputValue] = React.useState<IInputValue>(currentUser);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
 
   React.useEffect(() => {
     setInputValue({name: currentUser.name, email: currentUser.email})
