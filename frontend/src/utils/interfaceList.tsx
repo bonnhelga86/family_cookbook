@@ -1,9 +1,9 @@
 export interface ICurrentUser {
   name: string,
-  email: string,
+  email: string
 }
 
-export interface IInputValue {
+export interface IUserInputValue {
   name?: string,
   email: string,
   password?: string,
@@ -23,4 +23,10 @@ export interface IRecipe {
   ingredients: IIngredientList[];
 }
 
+type TSystemMessage = 'success' | 'error' | null;
 
+export interface ISystemMessage {
+  message: string;
+  type: TSystemMessage;
+  messageClass: string;
+}

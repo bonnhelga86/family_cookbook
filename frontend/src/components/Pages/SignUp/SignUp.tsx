@@ -2,13 +2,10 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 import Sign from "../../Sections/Sign/Sign";
 import * as auth from "../../../utils/authApi";
-import { ICurrentUser, IInputValue } from "../../../utils/interfaceList";
+import { ICurrentUser, IUserInputValue } from "../../../utils/interfaceList";
 
 function SignUp(
-  {
-    setIsLoggedIn,
-    setCurrentUser
-  }:
+  { setIsLoggedIn, setCurrentUser }:
   {
     setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>,
     setCurrentUser: React.Dispatch<React.SetStateAction<ICurrentUser>>
@@ -16,7 +13,7 @@ function SignUp(
 ) {
   const navigate = useNavigate();
 
-  const [inputValue, setInputValue] = React.useState<IInputValue>
+  const [inputValue, setInputValue] = React.useState<IUserInputValue>
   (
     {name: '', email: '', password: '', repeat_password: ''}
   );

@@ -49,6 +49,25 @@ $mainColor: #dc3545;
     }
   }
 
+  &__system-message {
+    visibility: hidden;
+    height: 21px;
+    font-size: 14px;
+    margin-top: 20px;
+
+    &_active {
+      visibility: visible;
+    }
+
+    &_success {
+      color: #216e39;
+    }
+
+    &_error {
+      color: $mainColor;
+    }
+  }
+
   &__button {
     background-color: $mainColor;
     border-color: $mainColor;
@@ -66,7 +85,7 @@ $mainColor: #dc3545;
       border-color: $mainColor;
     }
 
-    &:disabled {
+    &_disabled {
       pointer-events: none;
       background-color: $mainColor;
       border-color: $mainColor;

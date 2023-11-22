@@ -8,7 +8,7 @@ import { recipesList } from '../../../utils/recipes';
 import { IIngredientList, IRecipe } from '../../../utils/interfaceList';
 
 function RecipesList() {
-  const [isPopupOpen, setIsPopupOpen] = React.useState<boolean>(false);
+  const [isPopupOpen, setIsPopupOpen] = React.useState(false);
   const [ingredientList, setIngredientList] = React.useState<IIngredientList[]>([]);
 
   function getIngredientList(ingredients: IIngredientList[]): IIngredientList[] {

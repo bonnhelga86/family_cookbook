@@ -13,7 +13,7 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState<ICurrentUser>({name: '', email: ''});
 
   // function closePopup() {

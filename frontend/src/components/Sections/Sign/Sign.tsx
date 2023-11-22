@@ -5,19 +5,15 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
-import { IInputValue } from "../../../utils/interfaceList";
+import { IUserInputValue } from "../../../utils/interfaceList";
 import './Sign.scss';
 
 function Sign(
-  {
-    handleSubmit,
-    inputValue,
-    setInputValue
-  }:
+  { handleSubmit, inputValue, setInputValue }:
   {
     handleSubmit: React.FormEventHandler<HTMLFormElement>,
-    inputValue: IInputValue,
-    setInputValue: React.Dispatch<React.SetStateAction<IInputValue>>
+    inputValue: IUserInputValue,
+    setInputValue: React.Dispatch<React.SetStateAction<IUserInputValue>>
   }
 ) {
   const location = useLocation();

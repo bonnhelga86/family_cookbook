@@ -3,11 +3,7 @@ import Card from 'react-bootstrap/Card';
 import { IRecipe } from '../../../utils/interfaceList';
 
 function RecipesItem(
-  { recipe, getIngredientList }:
-  {
-    recipe: IRecipe,
-    getIngredientList: Function
-  }
+  { recipe, getIngredientList }: { recipe: IRecipe, getIngredientList: Function }
 ) {
   return (
     <li className="recipes__card-item">
