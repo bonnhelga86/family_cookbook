@@ -1,6 +1,15 @@
 import React from 'react';
 import './Popup.scss';
 
+// interface IPopup {
+//   popupName: 'string',
+//   isPopupOpen: boolean,
+//   onClose,
+//   onEscapeClose,
+//   hover: boolean,
+//   children
+// }
+
 function Popup({ popupName, isPopupOpen, onClose, onEscapeClose, hover=false, children }) {
   React.useEffect(() => {
     if (!isPopupOpen) return;

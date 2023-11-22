@@ -1,13 +1,12 @@
-import React from 'react';
-import Popup from '../Popup/Popup';
+import Tooltip from '../Tooltip/Tooltip';
+import { IIngredientList } from '../../../utils/interfaceList';
 import './PopupIngredients.scss';
 
-function PopupIngredients({ isPopupOpen, ingredientList }) {
+function PopupIngredients({ isPopupOpen, ingredientList }: {isPopupOpen: boolean, ingredientList: IIngredientList[]}) {
   return(
-    <Popup
-      isPopupOpen={isPopupOpen}
-      hover="true"
+    <Tooltip
       popupName="ingredients"
+      isPopupOpen={isPopupOpen}
     >
       <ul className="popup-ingredients__list">
         {ingredientList.map(ingredient => {
@@ -18,7 +17,7 @@ function PopupIngredients({ isPopupOpen, ingredientList }) {
           )
         })}
       </ul>
-    </Popup>
+    </Tooltip>
   )
 }
 

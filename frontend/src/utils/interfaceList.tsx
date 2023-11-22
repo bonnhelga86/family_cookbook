@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface ICurrentUser {
   name: string,
   email: string
@@ -23,10 +25,14 @@ export interface IRecipe {
   ingredients: IIngredientList[];
 }
 
-type TSystemMessage = 'success' | 'error' | null;
-
 export interface ISystemMessage {
   message: string;
-  type: TSystemMessage;
+  type: 'success' | 'error' | null;
   messageClass: string;
+}
+
+export interface IPopup {
+  popupName: string,
+  isPopupOpen: boolean,
+  children: ReactNode
 }
