@@ -80,7 +80,7 @@ module.exports.login = async (req, res, next) => {
       maxAge: 3600000 * 24 * 7,
       httpOnly: true,
       sameSite: true,
-    }).send({ email: user.email });
+    }).send({ email: user.email, name: user.name });
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
       next(new ValidationError('Некорректно заполнено одно из полей'));
