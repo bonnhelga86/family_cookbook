@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
 const categorySchema = new mongoose.Schema({
-  parent_id: {
-    type: Number,
+  parentId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'category',
     required: true,
     default: 0,
   },
