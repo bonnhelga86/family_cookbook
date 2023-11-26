@@ -1,4 +1,3 @@
-import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 import './Lead.scss';
@@ -24,7 +23,7 @@ function Lead() {
 
       <Button variant="danger" size="lg" className="lead__button">
         Смотреть рецепты
-      </Button>{' '}
+      </Button>
 
       <div className="lead__image"></div>
     </section>

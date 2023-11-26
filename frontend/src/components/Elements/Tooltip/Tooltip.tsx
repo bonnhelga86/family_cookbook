@@ -1,7 +1,7 @@
 import '../Popup/Popup.scss';
-import { IPopup } from '../../../utils/interfaceList';
+import { ITooltip } from '../../../utils/interfaceList';
 
-function Tooltip({ popupName, isPopupOpen, children }: IPopup) {
+function Tooltip({ popupName, isPopupOpen, children }: ITooltip) {
 
   return(
     <div className={`popup popup-${popupName} popup_events-none ${isPopupOpen ? "popup_opened" : ""}`}>

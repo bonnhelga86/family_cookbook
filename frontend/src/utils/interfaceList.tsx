@@ -31,7 +31,7 @@ export interface ISystemMessage {
   messageClass: string;
 }
 
-export interface IPopup {
+export interface ITooltip {
   popupName: string,
   isPopupOpen: boolean,
   children: ReactNode

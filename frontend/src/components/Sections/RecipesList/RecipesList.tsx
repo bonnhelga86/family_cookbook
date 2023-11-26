@@ -1,15 +1,18 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Stack from 'react-bootstrap/Stack';
 import RecipesItem from '../../Elements/RecipesItem/RecipesItem';
-import PopupIngredients from '../PopupIngredients/PopupIngredients';
+import PopupIngredients from '../../Elements/PopupIngredients/PopupIngredients';
+import PopupAddRecipe from '../../Elements/PopupAddRecipe/PopupAddRecipe';
 import './RecipesList.scss';
 import { recipesList } from '../../../utils/recipes';
 import { IIngredientList, IRecipe } from '../../../utils/interfaceList';
 
-function RecipesList() {
-  const [isPopupOpen, setIsPopupOpen] = React.useState(false);
+function RecipesList({ isLoggedIn }: {isLoggedIn:boolean}) {
+  const [isPopupIngredientOpen, setIsPopupIngredientOpen] = React.useState(false);
   const [ingredientList, setIngredientList] = React.useState<IIngredientList[]>([]);
+  const [isPopupAddRecipeOpen, setIsPopupAddRecipeOpen] = React.useState(false);
 
   function getIngredientList(ingredients: IIngredientList[]): IIngredientList[] {
     if(ingredients.length <= 6) {
@@ -20,7 +23,7 @@ function RecipesList() {
         item: 'Ещё...',
         extraClass: 'more',
         onMouseOver: (event: React.MouseEvent<HTMLLIElement>) => handleOpenMoreIngredients(event, ingredients),
-        onMouseOut: () => setIsPopupOpen(false)
+        onMouseOut: () => setIsPopupIngredientOpen(false)
       });
       return ingredientList;
     }
@@ -33,13 +36,25 @@ function RecipesList() {
     popupIngredientsElement.style.left  = (x - 200) + 'px';
 
     setIngredientList(ingredients);
-    setIsPopupOpen(true);
+    setIsPopupIngredientOpen(true);
   }
 
   return (
     <>
       <section className="recipes">
         <Container>
+
+        {isLoggedIn
+        &&  <Button
+              onClick={() => setIsPopupAddRecipeOpen(true)}
+              variant="danger"
+              size="lg"
+              className="recipes__button"
+            >
+              Добавить рецепт
+            </Button>
+        }
+
           <Stack direction="horizontal">
             <ul className="recipes__card-list">
               {recipesList.map((recipe: IRecipe) => {
@@ -53,8 +68,13 @@ function RecipesList() {
       </section>
 
       <PopupIngredients
-        isPopupOpen={isPopupOpen}
+        isPopupOpen={isPopupIngredientOpen}
         ingredientList={ingredientList}
+      />
+
+      <PopupAddRecipe
+        isPopupOpen={isPopupAddRecipeOpen}
+        setIsPopupOpen={setIsPopupAddRecipeOpen}
       />
     </>
   );

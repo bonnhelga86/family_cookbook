@@ -6,6 +6,13 @@ $cardColumn: (
 );
 
 .recipes {
+  &__button {
+    margin-bottom: 20px;
+    position: relative;
+    left: 100%;
+    transform: translate(-100%);
+  }
+
   &__card-list {
     list-style-type: none;
     margin: 0;
