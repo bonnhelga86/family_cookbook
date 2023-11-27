@@ -22,6 +22,7 @@ router.post('/signout', logout);
 
 router.use('/users', require('./users'));
 router.use('/recipes', require('./recipes'));
+router.use('/categories', require('./categories'));
 
 router.use(() => {
   throw new NotFoundError('Информация по запросу не найдена');

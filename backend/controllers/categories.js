@@ -16,7 +16,7 @@ module.exports.saveCategory = async (req, res, next) => {
 
   try {
     const category = await Category.create({ parentId, title });
-    const newCategory = await Category.findById(category._id).populate('category');
+    const newCategory = await Category.findById(category._id);
     res.status(201).send(newCategory);
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
