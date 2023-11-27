@@ -1,9 +1,8 @@
 const { celebrate, Joi } = require('celebrate');
 
-const saveCategoryValidator = celebrate({
+const saveIngredientValidator = celebrate({
   body: Joi.object().keys({
     title: Joi.string().required(),
-    parentId: Joi.string(),
   }),
 }, {
   abortEarly: false,
@@ -13,4 +12,4 @@ const saveCategoryValidator = celebrate({
   },
 });
 
-module.exports = { saveCategoryValidator };
+module.exports = { saveIngredientValidator };

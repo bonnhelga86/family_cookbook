@@ -4,7 +4,7 @@ const { ValidationError } = require('../errors/validation-error');
 
 module.exports.getCategory = async (req, res, next) => {
   try {
-    const category = await Category.find({}).populate('category');
+    const category = await Category.find({});
     res.send(category);
   } catch (error) {
     next(error);
@@ -35,7 +35,7 @@ module.exports.updateCategory = async (req, res, next) => {
       req.params.categoryId,
       { parentId, title },
       { new: true, runValidators: true },
-    ).populate('category');
+    );
     res.status(201).send(newCategory);
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
