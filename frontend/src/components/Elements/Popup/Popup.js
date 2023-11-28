@@ -7,7 +7,7 @@ import './Popup.scss';
 //   children
 // }
 
-function Popup({ popupName, isPopupOpen, setIsPopupOpen, children }) {
+function Popup({ size, popupName, isPopupOpen, setIsPopupOpen, children }) {
 
   function closePopup() {
     setIsPopupOpen(false);
@@ -41,7 +41,7 @@ function Popup({ popupName, isPopupOpen, setIsPopupOpen, children }) {
         className={`popup popup-${popupName} ${isPopupOpen ? "popup_opened" : ""}`}
         onClick={handleCloseClick}
     >
-      <div className="popup__container">
+      <div className={`popup__container popup__container_size_${size}`}>
         <button
           className='popup__close'
           type="button"

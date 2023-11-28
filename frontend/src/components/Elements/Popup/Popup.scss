@@ -28,9 +28,24 @@
     position: absolute;
     margin: 0 auto;
     padding: 34px 36px 37px;
-    width: 430px;
     border-radius: 10px;
     background-color: #fff;
+
+    &_size_small {
+      width: 430px;
+    }
+
+    &_size_medium {
+      width: 50%;
+    }
+
+    &_size_large {
+      width: 70%;
+    }
+
+    &_size_fill {
+      width: 100%;
+    }
   }
 
   &__close-none {

@@ -1,0 +1,9 @@
+.add-recipe {
+  position: relative;
+
+  &__button-wrap {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
