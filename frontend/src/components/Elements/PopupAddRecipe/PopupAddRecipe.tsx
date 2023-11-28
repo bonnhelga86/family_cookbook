@@ -1,7 +1,6 @@
 import React from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-// import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Popup from '../Popup/Popup';
@@ -13,6 +12,7 @@ function PopupAddRecipe(
   { isPopupOpen: boolean, setIsPopupOpen: React.Dispatch<React.SetStateAction<boolean>> }
 ) {
   const [activeTabIndex, setActiveTabIndex] = React.useState(0);
+  const [addRecipeFormValue, setAddRecipeFormValue] = React.useState({});
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -32,49 +32,58 @@ function PopupAddRecipe(
         onSubmit={(event) => handleSubmit(event)}
         className="add-recipe add-recipe__form"
       >
-        <Tabs
-          id="recipe-tab"
-          activeKey={`tab_${activeTabIndex}`}
-          className="add-recipe__list mb-3"
-          fill
-        >
+        <div className="add-recipe__tabs-wrap">
+          <Tabs
+            id="recipe-tab"
+            activeKey={`tab_${activeTabIndex}`}
+            className="add-recipe__list"
+            fill
+            variant="underline"
+          >
           {tabList.map((tab, index) => {
-              return (
-                <Tab key={index} title={tab.title} eventKey={`tab_${index}`} className="add-recipe__tab" disabled>
-                  {tab.content}
-                </Tab>
-              )
-            })
-          }
-        </Tabs>
+            return (
+              <Tab
+                tabClassName="add-recipe__tab"
+                key={index}
+                title={tab.title}
+                eventKey={`tab_${index}`}
+                className="tab"
+                disabled
+              >
+                {tab.content}
+              </Tab>
+            )
+          })}
+          </Tabs>
+        </div>
 
         <div className="add-recipe__button-wrap">
           <Button
             onClick={() => setActiveTabIndex(activeTabIndex > 0 ? activeTabIndex - 1 : 0)}
             variant="danger"
-            className="add-recipe__button"
+            className={`add-recipe__button ${activeTabIndex === 0 && 'add-recipe__button_disabled'}`}
             type="button"
           >
             Назад
           </Button>
 
-          {activeTabIndex === tabList.length-1 &&
-            <Button
-              variant="danger"
-              className="add-recipe__button"
-              type="submit"
-            >
-              Сохранить
-            </Button>
+          {activeTabIndex === tabList.length-1
+            ? <Button
+                variant="danger"
+                className="add-recipe__button"
+                type="submit"
+              >
+                Сохранить
+              </Button>
+            : <Button
+                onClick={() => setActiveTabIndex(activeTabIndex < tabList.length-1 ? activeTabIndex + 1 : tabList.length-1)}
+                variant="danger"
+                className="add-recipe__button"
+                type="button"
+              >
+                Далее
+              </Button>
           }
-          <Button
-            onClick={() => setActiveTabIndex(activeTabIndex < tabList.length-1 ? activeTabIndex + 1 : tabList.length-1)}
-            variant="danger"
-            className="add-recipe__button"
-            type="button"
-          >
-            Далее
-          </Button>
         </div>
 
       </Form>

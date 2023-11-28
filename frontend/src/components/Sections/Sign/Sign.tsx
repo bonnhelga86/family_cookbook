@@ -91,7 +91,7 @@ function Sign(
                   </FloatingLabel>
             }
 
-            <Button className="sign__button" type="submit">
+            <Button variant="danger" className="sign__button" type="submit">
               {(location.pathname === '/signup') ? 'Зарегистрироваться' : 'Войти'}
             </Button>
 

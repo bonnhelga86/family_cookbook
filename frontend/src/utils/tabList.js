@@ -1,18 +1,23 @@
+import TabMain from "../components/Elements/Tabs/TabMain/TabMain";
+import TabIngredients from "../components/Elements/Tabs/TabIngredients/TabIngredients";
+import TabSteps from "../components/Elements/Tabs/TabSteps/TabSteps";
+import TabSave from "../components/Elements/Tabs/TabSave/TabSave";
+
 export const tabList = [
   {
-    title:'Описание рецепта',
-    content: '123'
+    title:'Описание',
+    content: <TabMain />
   },
   {
-    title:'Описание рецепта1',
-    content: '123'
+    title:'Ингредиенты',
+    content: <TabIngredients />
   },
   {
-    title:'Описание рецепта2',
-    content: '123'
+    title:'Приготовление',
+    content: <TabSteps />
   },
   {
-    title:'Описание рецепта3',
-    content: '123'
+    title:'Сохранение',
+    content: <TabSave />
   }
 ];
