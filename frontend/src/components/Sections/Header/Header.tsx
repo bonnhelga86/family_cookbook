@@ -16,7 +16,7 @@ function Header(
 ) {
   return (
     <header className="header">
-      <Navbar bg="danger" data-bs-theme="dark">
+      <Navbar className="bg-primary">
         <Container>
           <Navbar.Brand as={Link} to="/">Family CookBook</Navbar.Brand>
           <Nav className="header__menu">

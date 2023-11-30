@@ -21,7 +21,7 @@ function Lead() {
         })}
       </Carousel>
 
-      <Button variant="danger" size="lg" className="lead__button">
+      <Button size="lg" className="lead__button">
         Смотреть рецепты
       </Button>
 

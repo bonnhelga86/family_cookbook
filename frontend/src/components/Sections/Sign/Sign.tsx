@@ -91,10 +91,9 @@ function Sign(
                   </FloatingLabel>
             }
 
-            <Button variant="danger" className="sign__button" type="submit">
+            <Button className="sign__button btn-lg" type="submit">
               {(location.pathname === '/signup') ? 'Зарегистрироваться' : 'Войти'}
             </Button>
-
             <Form.Text className="sign__text" id="passwordHelpBlock" muted>
               {(location.pathname === '/signup') ? 'Уже зарегистрированы?' : 'Еще нет аккаунта?'}
               <Link

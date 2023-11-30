@@ -53,11 +53,6 @@ function TabMain() {
           />
         </FloatingLabel>
 
-        {/* <>
-          <Form.Label>Range</Form.Label>
-          <Form.Range />
-        </> */}
-
         <FloatingLabel
           controlId="floatingLevel"
           label={`Сложность: ${tabMainValue.level}`}

@@ -43,6 +43,7 @@ function PopupAddRecipe(
           {tabList.map((tab, index) => {
             return (
               <Tab
+                data-spy="scroll"
                 tabClassName="add-recipe__tab"
                 key={index}
                 title={tab.title}
@@ -60,7 +61,6 @@ function PopupAddRecipe(
         <div className="add-recipe__button-wrap">
           <Button
             onClick={() => setActiveTabIndex(activeTabIndex > 0 ? activeTabIndex - 1 : 0)}
-            variant="danger"
             className={`add-recipe__button ${activeTabIndex === 0 && 'add-recipe__button_disabled'}`}
             type="button"
           >
@@ -69,7 +69,6 @@ function PopupAddRecipe(
 
           {activeTabIndex === tabList.length-1
             ? <Button
-                variant="danger"
                 className="add-recipe__button"
                 type="submit"
               >

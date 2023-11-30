@@ -1,5 +1,7 @@
-@import url("./normalize.css");
+@import "./normalize.css";
 
-@import url("./fonts/fonts.css");
+@import "./fonts/fonts.css";
 
-@import url("bootstrap/scss/bootstrap.scss");
+@import "./bootstrap_setting.scss";
+
+@import "bootstrap";

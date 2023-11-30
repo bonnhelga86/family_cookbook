@@ -1,12 +1,4 @@
 .header {
-  &__link {
-    color: rgba(255, 255, 255, .7);
-
-    &:hover {
-      color: rgba(255, 255, 255, .85);
-    }
-  }
-
   &__button {
     mask-image: url(../../../images/exit_icon.svg);
     mask-size: cover;

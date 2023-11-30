@@ -47,7 +47,6 @@ function RecipesList({ isLoggedIn }: {isLoggedIn:boolean}) {
         {isLoggedIn
         &&  <Button
               onClick={() => setIsPopupAddRecipeOpen(true)}
-              variant="danger"
               size="lg"
               className="recipes__button"
             >
